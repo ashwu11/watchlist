@@ -1,0 +1,8 @@
+<h3>Movie Form</h3>
+<a href="{% url 'movies' %}">Back</a>
+
+<form method="POST" action="">
+    {% csrf_token %} <!-- protects from attacks -->
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
