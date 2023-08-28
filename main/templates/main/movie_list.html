@@ -11,6 +11,8 @@
     <tr>
         <td>{{movie.title}}</td>
         <td><a href="{% url 'movie' movie.id %}">View</a></td>
+        <td><a href="{% url 'edit' movie.id %}">Edit</a></td>
+        <td><a href="{% url 'delete' movie.id %}">Delete</a></td>
     </tr>
     {% empty %}
         <h3>No items in list</h3>

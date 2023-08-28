@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Movie
 
@@ -17,4 +17,14 @@ class MovieDetail(DetailView):
 class MovieCreate(CreateView):
     model = Movie
     fields = '__all__'
-    success_url = reverse_lazy('movies') # redirects backs to this page 
+    success_url = reverse_lazy('movies')
+
+class MovieUpdate(UpdateView):
+    model = Movie
+    fields = '__all__'
+    success_url = reverse_lazy('movies')
+
+class MovieDelete(DeleteView):
+    model = Movie
+    context_object_name = 'movie'
+    success_url = reverse_lazy('movies')
