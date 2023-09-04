@@ -9,6 +9,11 @@
 <h1>My Watch List</h1>
 <a href="{% url 'create' %}"> Add Item</a>
 
+<form method="get">
+    <input type="text" name="search-text" value="{{search_input}}">
+    <input type="submit" value="Search">
+</form>
+
 <table>
     <tr>
         <th>Item</th>

@@ -46,6 +46,13 @@ class MovieList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['movies'] = context['movies'].filter(user = self.request.user)
         context['count'] = context['movies'].filter(status = False).count()
+
+        search_input = self.request.GET.get('search-text') or ''
+        if search_input:
+            context['movies'] = context['movies'].filter(title__icontains = search_input) # or title__startswith
+
+        context['search_input'] = search_input
+
         return context
 
 class MovieDetail(LoginRequiredMixin, DetailView):
