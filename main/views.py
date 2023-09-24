@@ -48,11 +48,11 @@ class MovieList(LoginRequiredMixin, ListView):
         context['count'] = context['movies'].filter(status = False).count()
 
         search_input = self.request.GET.get('search-text') or ''
-        if search_input:
-            context['movies'] = context['movies'].filter(title__icontains = search_input) # or title__startswith
-
         context['search_input'] = search_input
 
+        if search_input:
+            context['movies'] = context['movies'].filter(title__icontains=search_input) # or title__startswith
+        
         return context
 
 class MovieDetail(LoginRequiredMixin, DetailView):
@@ -62,16 +62,16 @@ class MovieDetail(LoginRequiredMixin, DetailView):
 
 class MovieCreate(LoginRequiredMixin, CreateView):
     model = Movie
-    fields = ['title', 'type', 'description', 'status']
+    fields = ['title', 'type', 'thoughts', 'status']
     success_url = reverse_lazy('movies')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super(MovieCreate, self.form_valid)
+        return super(MovieCreate, self).form_valid(form)
 
 class MovieUpdate(LoginRequiredMixin, UpdateView):
     model = Movie
-    fields = ['title', 'type', 'description', 'status', 'rating']
+    fields = ['title', 'type', 'thoughts', 'status', 'rating']
     success_url = reverse_lazy('movies')
 
 class MovieDelete(LoginRequiredMixin, DeleteView):

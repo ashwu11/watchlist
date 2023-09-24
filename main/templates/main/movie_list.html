@@ -1,34 +1,53 @@
-{% if request.user.is_authenticated %}
-    <p>{{request.user}}</p>
+{% extends 'main/main.html' %}
+{% block content %}
+
+<div class="header">
+    <div>
+        <h1> Hello {{request.user|title}} </h1> <!-- makes sure first letter of name is capitalized -->
+        <h3 style="margin:0"> You have <i>{{count}}</i> show{{count|pluralize:"s"}} to catch up on</h3>
+    </div>
+
+    {% if request.user.is_authenticated %}
     <a href="{% url 'logout' %}">Logout</a>
-{% else %}
+    {% else %}
     <a href="{% url 'login' %}">Login</a>
-{% endif %}
+    {% endif %}
+</div>
 
-<hr>
-<h1>My Watch List</h1>
-<a href="{% url 'create' %}"> Add Item</a>
 
-<form method="get">
-    <input type="text" name="search-text" value="{{search_input}}">
-    <input type="submit" value="Search">
-</form>
+<div id="search-add-bar">
+    <form method="get" style="display: flex; padding: 10px;">
+        <input type="text" name="search-text" value="{{search_input}}">
+        <input style="margin-left: 15px;" class="button" type="submit" value="Search">
+    </form>
 
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-    </tr>
+    <a style="margin-right: 5px;" id="add-link" href="{% url 'create' %}">&#43;</a>
+</div>
 
+
+<div class="movie-items">
     {% for movie in movies %}
-    <tr>
-        <td>{{movie.title}}</td>
-        <td><a href="{% url 'movie' movie.id %}">View</a></td>
-        <td><a href="{% url 'edit' movie.id %}">Edit</a></td>
-        <td><a href="{% url 'delete' movie.id %}">Delete</a></td>
-    </tr>
+    <div class="movie-wrapper">
+        {% if movie.status %}
+        <div class="movie-title">
+            <div class="complete-icon"></div>
+            <i><s><a href="{% url 'edit' movie.id %}">{{movie}}</a></s></i>
+        </div>
+        <a class="delete-link" href="{% url 'delete' movie.id %}">&#215;</a>
+
+        {% else %}
+        <div class="movie-title">
+            <div class="incomplete-icon"></div>
+            <a href="{% url 'edit' movie.id %}">{{movie}}</a>
+        </div>
+        <a class="delete-link" href="{% url 'delete' movie.id %}">&#215;</a>
+        {% endif %}
+
+    </div>
+
     {% empty %}
         <h3>No items in list</h3>
-
     {% endfor %}
-</table>
+</div>
+
+{% endblock content %}

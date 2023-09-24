@@ -1,8 +1,17 @@
-<h3>Movie Form</h3>
-<a href="{% url 'movies' %}">Back</a>
+{% extends 'main/main.html' %}
+{% block content %}
 
-<form method="POST" action="">
-    {% csrf_token %} <!-- protects from attacks -->
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+<div class="header">
+    <a href="{% url 'movies' %}">&#8592; Back</a>
+</div>
+
+<div class="body">
+    <form method="POST" action="">
+        {% csrf_token %} <!-- protects from attacks -->
+        {{form.as_p}}
+        <input class="button" type="submit" value="Submit">
+    </form>
+</div>
+
+
+{% endblock content %}

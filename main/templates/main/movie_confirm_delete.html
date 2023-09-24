@@ -1,6 +1,18 @@
-<a href="{% url 'movies' %}">Back</a>
-<form method="post">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{movie}}"?</p>
-    <input type="submit" value="Delete" />
-</form>
+{% extends 'main/main.html' %}
+{% block content %}
+
+<div class="header">
+    <a href="{% url 'movies' %}">&#8592; Back</a>
+</div>
+
+<div class="body">
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{movie}}"?</p>
+        <input class="button" type="submit" value="Delete" />
+    </form>
+</div>
+
+
+
+{% endblock content %}
