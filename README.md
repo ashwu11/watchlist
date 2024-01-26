@@ -1,8 +1,9 @@
 # ShowShelf
 
-A watchlist application for keeping track of your favourite shows, movies, or dramas.
-Users may create an account and log in to view their list of finished, in progress, or to-watch shows.
-Update your progress and record your thoughts on each movie or show along the way :) 
+🎥 A watchlist app for keeping track of favourite shows, movies, or dramas.
+This is a full-stack web application built using Python-Django.
+Users may create an account and log in to view their list of shows.
+Keep track of your thoughts and progress on each show along the way :) 
 
 ## Images
 | Login Screen | Registration | Main Menu | Create | Search |
