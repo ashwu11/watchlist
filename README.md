@@ -1,10 +1,10 @@
 # ShowShelf
 
 🎥 An easy-to-use watchlist application for keeping track of shows and movies. 
-Keep track of your thoughts and progress along the way :)
+Keep track of your thoughts and progress along the way :) <br>
 This web application was built with Python and the Django framework, 
-and supports all aspects of CRUD functionality. Worked with SQLite3 databases 
-and rendered these tables using HTML. Users are able to create an account and log in to manage their list of shows.
+and supports all aspects of CRUD functionality. Worked with SQLite databases 
+and rendered tables using HTML. Users are able to create an account and log in to manage their list of shows.
 
 ## Design
 <img width="595" alt="Screenshot 2024-01-25 at 11 50 25 PM" src="https://github.com/ashwu11/ShowShelf/assets/134242218/5c4c5335-c675-470b-903c-5de7287b31f3">
